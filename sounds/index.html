@@ -26,7 +26,7 @@ function toFile(name) {
 sounds.forEach(function(s) {
 	var btn = document.createElement("button");
 	btn.textContent = s;
-	btn.onclick = function() { new Audio(toFile(s)).play(); };
+	btn.onclick = function() { var a = new Audio(toFile(s)); a.play().catch(function(e) { alert(e); }); };
 	document.body.appendChild(btn);
 });
 </script>
