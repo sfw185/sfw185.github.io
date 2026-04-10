@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Soundboard</title>
+	<style>
+		* { margin: 0; padding: 0; box-sizing: border-box; }
+		body { background: #111; height: 100vh; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); gap: 4px; padding: 4px; }
+		button { border: none; border-radius: 6px; background: #222; color: #fff; font-size: 48px; font-family: Helvetica, Arial, sans-serif; cursor: pointer; transition: background 0.1s; }
+		button:active { background: #6CA23D; }
+	</style>
+</head>
+<body>
+<script>
+var sounds = [
+	'Fuck Off', 'No Fucking Way', 'Fucking Told You',
+	'Fucking Shit','Piece of Shit', 'Such Bullshit',
+	'JFC', 'Sure, Whatever', 'I Knew',
+];
+
+function toFile(name) {
+	return "clips/" + name.toLowerCase().replace(/[^a-z ]/g, "").trim().replace(/ +/g, "-") + ".mp3";
+}
+
+sounds.forEach(function(s) {
+	var btn = document.createElement("button");
+	btn.textContent = s;
+	btn.onclick = function() { new Audio(toFile(s)).play(); };
+	document.body.appendChild(btn);
+});
+</script>
+</body>
+</html>
