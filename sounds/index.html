@@ -7,7 +7,7 @@
 	<style>
 		* { margin: 0; padding: 0; box-sizing: border-box; }
 		body { background: #111; height: 100vh; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); gap: 4px; padding: 4px; }
-		button { border: none; border-radius: 6px; background: #222; color: #fff; font-size: 48px; font-family: Helvetica, Arial, sans-serif; cursor: pointer; transition: background 0.1s; }
+		button { border: none; border-radius: 6px; background: #222; color: #fff; font-size: clamp(14px, 3vw, 48px); font-family: Helvetica, Arial, sans-serif; cursor: pointer; transition: background 0.1s; }
 		button:active { background: #6CA23D; }
 	</style>
 </head>
@@ -26,7 +26,7 @@ function toFile(name) {
 sounds.forEach(function(s) {
 	var btn = document.createElement("button");
 	btn.textContent = s;
-	btn.onclick = function() { var a = new Audio(toFile(s)); a.play().catch(function(e) { alert(e); }); };
+	btn.onclick = function() { var a = new Audio(toFile(s)); a.volume = 1.0; a.play().catch(function(e) { alert(e); }); };
 	document.body.appendChild(btn);
 });
 </script>
