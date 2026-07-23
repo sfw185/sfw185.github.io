@@ -2,19 +2,398 @@
 <html lang="en-au">
 <head>
 	<meta charset="utf-8">
-	<title>Simon Wardan</title>
-	<style type="text/css">
-		body { font-family: Helvetica, Arial, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
-		div { max-width: 500px; text-align: center; }
-		a { color: #6CA23D; text-decoration: none; font-weight: bold; }
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Simon Wardan — Principal Engineer &amp; Technical Consultant</title>
+	<meta name="description" content="Simon Wardan — Principal Engineer and technical consultant with 20+ years bridging business and technical teams. Enterprise AI/ML and cloud-native architecture for clients including Bupa, Qantas and Jetstar.">
+	<style>
+		:root {
+			--bg: #ffffff;
+			--surface: #f6f8f3;
+			--surface-2: #eef1ea;
+			--text: #20242a;
+			--text-soft: #515b64;
+			--text-faint: #8a929b;
+			--border: #e4e7e0;
+			--accent: #4d8a29;
+			--accent-strong: #3d6f20;
+			--accent-soft: rgba(77, 138, 41, 0.10);
+			--accent-line: rgba(77, 138, 41, 0.28);
+			--radius: 12px;
+			--maxw: 1080px;
+		}
+		@media (prefers-color-scheme: dark) {
+			:root {
+				--bg: #12151a;
+				--surface: #1a1e24;
+				--surface-2: #21262e;
+				--text: #e7eaec;
+				--text-soft: #a6afb8;
+				--text-faint: #6d7680;
+				--border: #2a2f37;
+				--accent: #86c34e;
+				--accent-strong: #9fd766;
+				--accent-soft: rgba(134, 195, 78, 0.13);
+				--accent-line: rgba(134, 195, 78, 0.32);
+			}
+		}
+
+		* { box-sizing: border-box; }
+		html { -webkit-text-size-adjust: 100%; }
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			color: var(--text);
+			background: var(--bg);
+			margin: 0;
+			line-height: 1.62;
+			font-size: 16px;
+			-webkit-font-smoothing: antialiased;
+		}
+		.wrap { max-width: var(--maxw); margin: 0 auto; padding: clamp(1.5rem, 4vw, 3.5rem) clamp(1.1rem, 4vw, 2.5rem); }
+
+		a { color: var(--accent); text-decoration: none; }
+		a:hover { text-decoration: underline; }
+
+		/* ---------- Masthead ---------- */
+		.masthead {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1.5rem 2rem;
+			align-items: flex-end;
+			justify-content: space-between;
+			padding-bottom: 1.6rem;
+			border-bottom: 1px solid var(--border);
+		}
+		h1 {
+			font-size: clamp(2.1rem, 6vw, 3.1rem);
+			line-height: 1.04;
+			letter-spacing: -0.02em;
+			margin: 0;
+			font-weight: 700;
+		}
+		.role {
+			margin: 0.55rem 0 0;
+			font-size: clamp(1rem, 2.6vw, 1.18rem);
+			color: var(--accent);
+			font-weight: 600;
+			letter-spacing: 0.01em;
+		}
+		.contact {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+			font-size: 0.94rem;
+		}
+		.contact li { display: flex; align-items: center; gap: 0.6rem; color: var(--text-soft); }
+		.contact a { color: var(--text-soft); }
+		.contact a:hover { color: var(--accent); }
+		.contact svg { width: 16px; height: 16px; flex: none; color: var(--accent); }
+
+		/* ---------- Layout ---------- */
+		.layout {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2.4rem;
+			margin-top: 2.2rem;
+		}
+		@media (min-width: 880px) {
+			.layout { grid-template-columns: minmax(0, 2.3fr) minmax(230px, 1fr); gap: 3rem; }
+			.aside { align-self: start; position: sticky; top: 2rem; }
+		}
+
+		section { margin: 0 0 2.2rem; }
+		.eyebrow {
+			font-size: 0.74rem;
+			font-weight: 700;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+			color: var(--text-faint);
+			margin: 0 0 1rem;
+			padding-bottom: 0.5rem;
+			border-bottom: 1px solid var(--border);
+		}
+
+		/* ---------- Summary ---------- */
+		.summary { font-size: 1.05rem; color: var(--text-soft); margin: 0 0 1rem; max-width: 62ch; }
+		.summary strong { color: var(--text); font-weight: 600; }
+
+		/* ---------- Experience ---------- */
+		.job { margin-bottom: 1.9rem; }
+		.job:last-child { margin-bottom: 0; }
+		.job-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.2rem 1rem; }
+		.job-title { font-size: 1.12rem; font-weight: 700; margin: 0; letter-spacing: -0.01em; }
+		.job-title .co { color: var(--accent); }
+		.job-dates { font-size: 0.86rem; color: var(--text-faint); white-space: nowrap; font-variant-numeric: tabular-nums; }
+		.chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.6rem 0 0.2rem; }
+		.chip {
+			font-size: 0.76rem; font-weight: 600; letter-spacing: 0.02em;
+			color: var(--accent-strong); background: var(--accent-soft);
+			padding: 0.18rem 0.6rem; border-radius: 999px;
+		}
+		@media (prefers-color-scheme: dark) { .chip { color: var(--accent-strong); } }
+
+		ul.bullets { list-style: none; margin: 0.75rem 0 0; padding: 0; }
+		ul.bullets li { position: relative; padding-left: 1.35rem; margin: 0.4rem 0; color: var(--text-soft); }
+		ul.bullets li::before {
+			content: ""; position: absolute; left: 0.15rem; top: 0.62em;
+			width: 5px; height: 5px; border-radius: 50%;
+			background: var(--text-faint);
+		}
+		ul.bullets li.win { color: var(--text); font-weight: 500; }
+		ul.bullets li.win::before {
+			content: ""; left: 0; top: 0.5em;
+			width: 8px; height: 8px; border-radius: 2px;
+			background: var(--accent);
+			box-shadow: 0 0 0 4px var(--accent-soft);
+		}
+		ul.bullets li.win b { color: var(--text); font-weight: 700; }
+
+		/* ---------- Projects ---------- */
+		.projects { display: grid; gap: 0.9rem; }
+		.project { padding: 0; }
+		.project h3 { margin: 0 0 0.15rem; font-size: 1rem; }
+		.project h3 .accent { color: var(--accent); }
+		.project p { margin: 0; color: var(--text-soft); font-size: 0.95rem; }
+
+		/* ---------- Aside / Skills ---------- */
+		.card {
+			background: var(--surface);
+			border: 1px solid var(--border);
+			border-radius: var(--radius);
+			padding: 1.2rem 1.25rem;
+			margin-bottom: 1.1rem;
+		}
+		.card h2 {
+			font-size: 0.74rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase;
+			color: var(--text-faint); margin: 0 0 0.85rem;
+		}
+		.skill-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+		.skill {
+			font-size: 0.84rem; font-weight: 500;
+			background: var(--surface-2); color: var(--text);
+			padding: 0.28rem 0.65rem; border-radius: 7px;
+			border: 1px solid var(--border);
+		}
+		.skill.lead { background: var(--accent-soft); border-color: var(--accent-line); color: var(--accent-strong); font-weight: 600; }
+		.inline-list { margin: 0; color: var(--text-soft); font-size: 0.92rem; line-height: 1.9; }
+
+		/* ---------- Footer ---------- */
+		.foot { margin-top: 2.5rem; padding-top: 1.4rem; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-faint); text-align: center; }
+		.foot a { color: var(--text-faint); }
+		.foot a:hover { color: var(--accent); }
+
+		/* ---------- Print ---------- */
+		@media print {
+			:root {
+				--bg: #fff; --surface: #fff; --surface-2: #fff;
+				--text: #000; --text-soft: #222; --text-faint: #555;
+				--border: #ccc; --accent: #2f6317; --accent-strong: #2f6317;
+				--accent-soft: #eef3e8; --accent-line: #cdd9c0;
+			}
+			body { font-size: 10.5pt; line-height: 1.4; }
+			.wrap { max-width: none; padding: 0; }
+			.layout { grid-template-columns: minmax(0, 2.3fr) minmax(200px, 1fr); gap: 1.4rem; margin-top: 1.2rem; }
+			.aside { position: static; }
+			.card { border: 1px solid #ddd; padding: 0.7rem 0.8rem; break-inside: avoid; }
+			.job, .project { break-inside: avoid; }
+			.foot { display: none; }
+			ul.bullets li.win::before { box-shadow: none; }
+			a { color: #000; }
+		}
 	</style>
 </head>
 <body>
-	<div>
-		<p>My name is Simon, and I've been building software since 2001</p>
-		<p>You can find me on <a href="https://github.com/sfw185">GitHub</a> and <a href="https://www.instagram.com/sfw185/">Instagram</a></p>
-		<p>Email: <a href="mailto:simon@wardan.com">simon@wardan.com</a></p>
-		<p><a href="online-tools">Tools</a> / <a href="sounds">Sounds</a></p>
+	<div class="wrap">
+
+		<header class="masthead">
+			<div class="identity">
+				<h1>Simon Wardan</h1>
+				<p class="role">Principal Engineer &middot; Technical Consultant</p>
+			</div>
+			<ul class="contact">
+				<li>
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+					<a href="tel:+61490823179">+61 490 823 179</a>
+				</li>
+				<li>
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+					<a href="mailto:simon@wardan.com">simon@wardan.com</a>
+				</li>
+				<li>
+					<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.27 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+					<a href="https://github.com/sfw185">github.com/sfw185</a>
+				</li>
+			</ul>
+		</header>
+
+		<div class="layout">
+			<main>
+				<section>
+					<p class="eyebrow">Summary</p>
+					<p class="summary">
+						<strong>20+ years of technical consulting</strong> bridging business and technical teams. I architect and deliver
+						<strong>enterprise AI/ML and cloud-native systems</strong> — with a proven track record shipping production platforms
+						for major clients including <strong>Bupa</strong> and <strong>Qantas</strong>. Experience spans healthcare, transport,
+						e-commerce and government.
+					</p>
+				</section>
+
+				<section>
+					<p class="eyebrow">Experience</p>
+
+					<div class="job">
+						<div class="job-head">
+							<p class="job-title">Principal Engineer, <span class="co">Terem Technologies</span></p>
+							<span class="job-dates">Aug 2017 — Present</span>
+						</div>
+						<div class="chips">
+							<span class="chip">Qantas</span>
+							<span class="chip">Jetstar</span>
+							<span class="chip">Bupa</span>
+						</div>
+						<ul class="bullets">
+							<li class="win"><b>Delivered national tech talks</b> at Amazon, Google, Atlassian and YOW!</li>
+							<li class="win">Led hackathon teams to multiple wins — including <b>top prize at the 2018 AUSTRAC ASEAN codeathon</b>, presented by the Minister for Law Enforcement &amp; Cyber Security</li>
+							<li class="win">Served as <b>primary technical advisor</b> on enterprise engagements with Qantas, Jetstar and Bupa, leading stakeholder relationships</li>
+							<li>Architected cloud-native solutions powering large-scale, business-critical operational capabilities</li>
+							<li>Built and delivered client prototypes that solved operational challenges and drove measurable business value</li>
+						</ul>
+					</div>
+
+					<div class="job">
+						<div class="job-head">
+							<p class="job-title">Lead Consultant, <span class="co">Terem Technologies</span></p>
+							<span class="job-dates">Oct 2013 — Jul 2017</span>
+						</div>
+						<ul class="bullets">
+							<li class="win">Designed and load-tested an API <b>sustaining 100,000 requests per second</b></li>
+							<li>Partnered with clients to gather requirements and design, integrate and deliver software solutions</li>
+							<li>Worked alongside designers and business analysts to translate needs into client value</li>
+							<li>Built a prototype letting a radio station's social team record and edit snippets for social sharing</li>
+							<li>Delivered across Ruby, C#, Java and PhoneGap in an agile/scrum team</li>
+						</ul>
+					</div>
+
+					<div class="job">
+						<div class="job-head">
+							<p class="job-title">CTO, <span class="co">Floktu</span></p>
+							<span class="job-dates">May 2011 — Oct 2013</span>
+						</div>
+						<ul class="bullets">
+							<li class="win">Drove <b>two major product pivots</b> to become a strong player in Australia's online registration space</li>
+							<li>Recruited and led the development team, driving product and company direction in an agile environment</li>
+							<li>Rebuilt the Floktu platform to handle content and registration for major events</li>
+							<li>Engineered a plugin system for delivering bespoke functionality to individual clients</li>
+							<li>Led investor briefings, sales meetings and client workshops; grew the company from early-stage startup to a self-sufficient online services provider</li>
+						</ul>
+					</div>
+
+					<div class="job">
+						<div class="job-head">
+							<p class="job-title">Team Leader, <span class="co">Made In Katana</span></p>
+							<span class="job-dates">Jan 2008 — May 2011</span>
+						</div>
+						<ul class="bullets">
+							<li class="win">Led development of <b>Pharmacy4u</b>, a scalable platform taking brick-and-mortar pharmacies online</li>
+							<li>Built a PHP5 MVC framework and an in-house Objective-C framework for custom native iOS/Android apps</li>
+							<li>Led long-term projects building bespoke frameworks in a fast-paced digital agency</li>
+						</ul>
+					</div>
+
+					<div class="job">
+						<div class="job-head">
+							<p class="job-title">Project Manager, <span class="co">Bywave</span></p>
+							<span class="job-dates">Jun 2006 — Dec 2007</span>
+						</div>
+						<ul class="bullets">
+							<li>First professional software role — built e-commerce sites for small and medium businesses on WordPress and various platforms</li>
+							<li>Managed projects and client relationships alongside development responsibilities</li>
+							<li>Configured and deployed web hosting; handled software and hosting support</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<p class="eyebrow">Personal Projects &middot; 2002 — Ongoing</p>
+					<div class="projects">
+						<div class="project">
+							<h3><span class="accent">Chatrio</span></h3>
+							<p>Zero-configuration video chat over the web, using web sockets for fast video sessions.</p>
+						</div>
+						<div class="project">
+							<h3><span class="accent">Ebookers Explorer</span></h3>
+							<p>Social-media aggregation backend for an iPad app — aggregating, parsing and serving data via JSON.</p>
+						</div>
+						<div class="project">
+							<h3><span class="accent">GMT</span></h3>
+							<p>Community-driven site that ran for ~8 years. My first serious foray into software, and where I found my passion for it.</p>
+						</div>
+					</div>
+				</section>
+			</main>
+
+			<aside class="aside">
+				<div class="card">
+					<h2>Core Expertise</h2>
+					<div class="skill-list">
+						<span class="skill lead">Solution Architecture</span>
+						<span class="skill lead">Enterprise AI/ML</span>
+						<span class="skill lead">Cloud-Native (AWS)</span>
+						<span class="skill">Technical Consulting</span>
+						<span class="skill">Stakeholder Management</span>
+						<span class="skill">Rapid Prototyping</span>
+						<span class="skill">Performance &amp; Load Testing</span>
+						<span class="skill">Agile / Scrum</span>
+					</div>
+				</div>
+
+				<div class="card">
+					<h2>Languages</h2>
+					<div class="skill-list">
+						<span class="skill">Ruby</span>
+						<span class="skill">C#</span>
+						<span class="skill">Java</span>
+						<span class="skill">JavaScript</span>
+						<span class="skill">PHP</span>
+						<span class="skill">Objective-C</span>
+					</div>
+				</div>
+
+				<div class="card">
+					<h2>Platforms</h2>
+					<div class="skill-list">
+						<span class="skill">AWS</span>
+						<span class="skill">iOS &amp; Android</span>
+						<span class="skill">REST APIs</span>
+						<span class="skill">WebSockets</span>
+					</div>
+				</div>
+
+				<div class="card">
+					<h2>Leadership</h2>
+					<div class="skill-list">
+						<span class="skill">Technical Advisory</span>
+						<span class="skill">Team Leadership</span>
+						<span class="skill">Public Speaking</span>
+						<span class="skill">Mentoring</span>
+					</div>
+				</div>
+
+				<div class="card">
+					<h2>Industries</h2>
+					<p class="inline-list">Healthcare &middot; Transport &middot; E-commerce &middot; Government</p>
+				</div>
+			</aside>
+		</div>
+
+		<footer class="foot">
+			<a href="https://github.com/sfw185">GitHub</a> &nbsp;&middot;&nbsp;
+			<a href="mailto:simon@wardan.com">simon@wardan.com</a> &nbsp;&middot;&nbsp;
+			<a href="sounds">Sounds</a>
+		</footer>
+
 	</div>
 </body>
 </html>
