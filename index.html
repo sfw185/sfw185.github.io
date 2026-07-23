@@ -91,15 +91,18 @@
 		.contact a:hover { color: var(--accent); }
 		.contact svg { width: 16px; height: 16px; flex: none; color: var(--accent); }
 		.dl-item { margin-top: 0.35rem; }
-		.dl-btn {
+		.contact .dl-btn {
 			display: inline-flex; align-items: center; gap: 0.5rem;
-			background: var(--accent); color: #fff; font-weight: 600; font-size: 0.9rem;
-			padding: 0.45rem 0.9rem; border-radius: 8px; text-decoration: none;
-			transition: opacity 0.15s ease;
+			background: #5a9e2f; color: #0d1207; font-weight: 700; font-size: 0.9rem;
+			padding: 0.45rem 0.95rem; border-radius: 8px; text-decoration: none;
+			transition: background 0.15s ease;
 		}
-		.dl-btn:hover { opacity: 0.9; text-decoration: none; }
-		.dl-btn svg { width: 16px; height: 16px; flex: none; color: currentColor; }
-		@media (prefers-color-scheme: dark) { .dl-btn { color: #0f1216; } }
+		.contact .dl-btn:hover { background: #67b338; color: #0d1207; text-decoration: none; }
+		.contact .dl-btn svg { width: 16px; height: 16px; flex: none; color: currentColor; }
+		@media (prefers-color-scheme: dark) {
+			.contact .dl-btn { background: #86c34e; color: #0d1207; }
+			.contact .dl-btn:hover { background: #97d15f; color: #0d1207; }
+		}
 
 		/* ---------- Layout ---------- */
 		.layout {
@@ -161,11 +164,14 @@
 		ul.bullets li.win b { color: var(--text); font-weight: 700; }
 
 		/* ---------- Projects ---------- */
-		.projects { display: grid; gap: 0.9rem; }
+		.projects { display: grid; gap: 1rem 1.8rem; }
+		@media (min-width: 620px) { .projects { grid-template-columns: 1fr 1fr; } }
 		.project { padding: 0; }
 		.project h3 { margin: 0 0 0.15rem; font-size: 1rem; }
-		.project h3 .accent { color: var(--accent); }
+		.project h3 .accent, .project h3 a { color: var(--accent); text-decoration: none; }
+		.project h3 a:hover { text-decoration: underline; }
 		.project p { margin: 0; color: var(--text-soft); font-size: 0.95rem; }
+		.project code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.86em; background: var(--surface-2); padding: 0.05em 0.3em; border-radius: 4px; }
 
 		/* ---------- Aside / Skills ---------- */
 		.card {
@@ -350,6 +356,30 @@
 				<section>
 					<p class="eyebrow">Personal Projects &middot; 2002 — Ongoing</p>
 					<div class="projects">
+						<div class="project">
+							<h3><a href="https://bjjcal.app/">BJJCal</a></h3>
+							<p>ICS calendar feeds of Brazilian Jiu-Jitsu competitions for every country, refreshed daily.</p>
+						</div>
+						<div class="project">
+							<h3><a href="https://bjj-timer.com/">BJJ Timer</a></h3>
+							<p>A focused, no-nonsense round timer for Brazilian Jiu-Jitsu training.</p>
+						</div>
+						<div class="project">
+							<h3><a href="https://playglitched.com/">Glitched</a></h3>
+							<p>A browser-playable game built in Godot (GDScript).</p>
+						</div>
+						<div class="project">
+							<h3><a href="https://github.com/sfw185/glyph">Glyph</a></h3>
+							<p>An emoji-only social platform — posts are pure emoji, each with a unique three-word URL.</p>
+						</div>
+						<div class="project">
+							<h3><a href="https://github.com/sfw185/gh-clean">gh-clean</a></h3>
+							<p>A <code>gh</code> CLI extension that clears out done and stale local git branches.</p>
+						</div>
+						<div class="project">
+							<h3><a href="https://github.com/sfw185/LogoDetector">Logo Detector</a></h3>
+							<p>Computer-vision tool that scans video for brand logos using OpenCV and FFmpeg.</p>
+						</div>
 						<div class="project">
 							<h3><span class="accent">Chatrio</span></h3>
 							<p>Zero-configuration video chat over the web, using web sockets for fast video sessions.</p>
