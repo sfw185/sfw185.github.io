@@ -1,1 +1,5 @@
 .DS_Store
+
+# Client-specific cover letters — kept local, never published
+cover-letters/
+Simon-Wardan-CoverLetter-*.pdf
