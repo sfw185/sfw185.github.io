@@ -218,6 +218,8 @@ ul.bullets li.win b { color: var(--text); font-weight: 700; }
 	.aside { position: static; }
 	.card { border: 1px solid #ddd; padding: 0.7rem 0.8rem; break-inside: avoid; }
 	.job, .project { break-inside: avoid; }
+	.eyebrow, .card h2 { break-after: avoid; }
+	.eyebrow + .job { break-before: avoid; }
 	.contact .dl-item, .foot { display: none; }
 	ul.bullets li.win::before { box-shadow: none; }
 	.letter { max-width: none; margin-top: 1.6rem; }
